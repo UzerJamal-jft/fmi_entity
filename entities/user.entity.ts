@@ -1,9 +1,5 @@
-import { IsEmail, Max, Min } from '@nestjs/class-validator';
-import { Client } from '../../client/entity/client.entity';
-import { Contact } from '../../address/entity/contact.entity';
-import { Role } from '../../role/entities/role.entity';
-import { Store } from '../../store/entity/store.entity';
-import { Base } from '../../tenant/entity/base.entity';
+import { IsEmail, Max, Min } from "@nestjs/class-validator";
+
 import {
   Column,
   Entity,
@@ -14,17 +10,22 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
-} from 'typeorm';
-import { status } from '../user.enum';
-import { Theme } from './theme.entity';
-import { Vendor } from '../../vendor/entity/vendor.entity';
-import { Technician } from '../../technician/entity/technicain.entity';
-import { NotificationToken } from '../../shared/entity/notification_token.entity';
-import { NotificationMessage } from '../../shared/entity/notification_message.entity';
+} from "typeorm";
+import { Base } from "./base.entity";
+import { Role } from "./role.entity";
+import { Contact } from "./contact.entity";
+import { Client } from "./client.entity";
+import { Store } from "./store.entity";
+import { Theme } from "./theme.entity";
+import { Vendor } from "./vendor.entity";
+import { Technician } from "./technicain.entity";
+import { NotificationToken } from "./notification_token.entity";
+import { NotificationMessage } from "./notification_message.entity";
+import { status } from "../constant/user.enum";
 
 @Entity()
 export class User extends Base {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({ nullable: true })
@@ -68,7 +69,7 @@ export class User extends Base {
   @Column({
     nullable: true,
     default:
-      'https://grailsguru.nyc3.digitaloceanspaces.com/profilePicture/user/e3c43fa0-3ace-45dc-acf3-256eb5ab3d69.png',
+      "https://grailsguru.nyc3.digitaloceanspaces.com/profilePicture/user/e3c43fa0-3ace-45dc-acf3-256eb5ab3d69.png",
   })
   profileImage: string;
 
